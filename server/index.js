@@ -4,14 +4,16 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const passport = require('passport');
+const cors = require('cors');
 
 const router = require('./router.js');
 
 const app = express();
 mongoose.connect('mongodb://localhost/memes');
 
-app.use(morgan('dev'));
-app.use(bodyParser.json({ type: '*/*' }));
+app.use(morgan('combined'));
+app.use(cors());
+app.use(bodyParser.json());
 app.use(passport.initialize());
 
 router(app);
