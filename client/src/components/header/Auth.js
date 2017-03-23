@@ -1,37 +1,36 @@
-import React, { Component, PureComponent } from 'react';
-import { Link } from 'react-router';
+import React, { PureComponent } from 'react';
 
-class Auth extends Component {
+import NavLink from './NavLink.js';
+
+class Auth extends PureComponent {
 	renderItems() {
 		if(!this.props.authenticated){
 			return [
-				<li>
-					<Link to="/signin">Login</Link>
+				<li className="nav-item" key={1}>
+					<NavLink to="/signin">Login</NavLink>
 				</li>,
-				<li >
-					<Link to="/signup">SignUp</Link>
+				<li className="nav-item" key={2}>
+					<NavLink to="/signup">SignUp</NavLink>
 				</li>
 			]
 		} else {
 			return[
-				<li>
-					<div>Hello, %USER%</div>
+				<li className="nav-item" key={1}>
+					<div className="navbar-brand">Hello, {this.props.username}</div>
 				</li>,
-				<li>
-					<button>Log Out</button>
+				<li className="header-auth__logout nav-item" key={2}>
+					<button onClick={this.props.signoutUser} className="btn btn-danger">Log Out</button>
 				</li>
 			]
 		}
 	}
 	render() {
 		return(
-			<ul className="nav navbar-nav">
+			<ul className="nav navbar-nav header-auth">
 				{this.renderItems()}
 			</ul>
 		)
 	}
 }
-
-
 
 export default Auth;

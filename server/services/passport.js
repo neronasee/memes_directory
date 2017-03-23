@@ -27,7 +27,7 @@ const localOptions = {
 }
 
 const localLogin = new LocalStrategy(localOptions, function(name, password, done) {
-	User.findOne({ name: name }, (err, user) => {
+	User.findOne({ name: name.toLowerCase() }, (err, user) => {
 		if(err) return done(err, false);
 		if(!user) return done(null, false);
 

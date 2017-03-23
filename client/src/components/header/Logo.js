@@ -7,7 +7,7 @@ class Logo extends PureComponent {
 	render(){
 		return(
 				<Link to="/" className="header-logo">
-					<img className="header-logo__img" src={logo}/>
+					<img className="header-logo__img" alt="logo" src={logo}/>
 					<h2 className="header-logo__text">
 						MEMES
 						<br />

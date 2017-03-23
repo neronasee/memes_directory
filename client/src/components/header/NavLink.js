@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 
 class NavLink extends PureComponent {
   render() {
-    return <Link {...this.props} className="navbar-brand" activeClassName="header-active-link"/>
+    return <Link {...this.props} activeClassName="header-active-link" className="navbar-brand"/>
   }
 }
 

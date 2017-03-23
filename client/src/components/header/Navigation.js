@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import { Link, IndexLink } from 'react-router';
+import React, { PureComponent } from 'react';
+import { IndexLink } from 'react-router';
 
 import NavLink from './NavLink.js';
 
-class Navigation extends Component {
+class Navigation extends PureComponent {
 	render() {
 		return(
 			<nav className="navbar navbar-light">

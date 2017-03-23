@@ -8,17 +8,17 @@ const tokenForUser = user => {
 }
 
 exports.signup = (req, res, next) => {
-	const { name, password } = req.body;
+	let { name, password } = req.body;
 
 	if(!name || !password) {
 		return res.status(422).send({error: "Provide name and password"});
 	}
 
-	User.findOne({ name: name }, (err, existingUser) => {
+	User.findOne({ name: name.toLowerCase() }, (err, existingUser) => {
 		if(err) return next(err);
 
 		if(existingUser) {
-			return res.status(422).send({error: "Name is already in in use"});
+			return res.status(422).json({error: "Name is already in in use"});
 		}
 
 		const user = new User({
@@ -28,11 +28,17 @@ exports.signup = (req, res, next) => {
 		user.save(err => {
 			if(err) return next(err);
 
-			res.send({ token: tokenForUser(user) });
+			res.send({
+				token: tokenForUser(user),
+				user: user.name
+			});
 		})
 	})
 }
 
 exports.signin = (req, res, next) => {
-	res.send({ token: tokenForUser(req.user) })
+	res.send({
+		token: tokenForUser(req.user),
+		user: req.user.name
+	})
 }

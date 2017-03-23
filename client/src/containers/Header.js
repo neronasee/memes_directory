@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import Logo from '../components/header/Logo.js';
 import Navigation from '../components/header/Navigation.js';
 import Auth from '../components/header/Auth.js';
-import { signinUser, signoutUser } from '../actions/auth.js';
+import { signoutUser, signupUser, signinUser } from '../actions/auth.js';
 import '../assets/css/header.css';
 
 class Header extends Component {
@@ -22,13 +22,15 @@ class Header extends Component {
 								<Navigation />
 							</div>
 							<div className="col-xs-6">
-								<Auth authenticated={this.props.authenticated}/>
+								<Auth
+									authenticated={this.props.authenticated}
+									signoutUser={this.props.signoutUser}
+									username={this.props.username}
+								/>
 							</div>
 						</div>
 					</div>
 				</div>
-				<button onClick={this.props.signinUser}>True</button>
-				<button onClick={this.props.signoutUser}>False</button>
 			</header>
 		)
 	}
@@ -36,13 +38,14 @@ class Header extends Component {
 
 const mapStateToProps = state => {
 	return {
-		authenticated: state.auth.authenticated
+		authenticated: state.auth.authenticated,
+		username: state.auth.username
 	}
 }
 
 const mapDispatchToProps = (dispatch) => {
 	return(
-		bindActionCreators({signinUser, signoutUser}, dispatch)
+		bindActionCreators({signoutUser, signupUser, signinUser }, dispatch)
 	)
 }
 
