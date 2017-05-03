@@ -1,0 +1,15 @@
+.memes-grid {
+  display: flex;
+  flex-wrap: wrap;
+
+  padding-top: 20px;
+}
+
+.memes-item {
+  flex-basis: 33.33%;
+  text-align: center;
+}
+
+.memes-item img {
+  max-width: 100%;
+}

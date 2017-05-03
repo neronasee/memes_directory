@@ -3,7 +3,7 @@ const Mem = require('../models/mem.js');
 exports.postMem = (req, res, next) => {
 	const { title, description, img } = req.body;
 	console.log(req.body)
-	if(!title || !img) {
+	if(!title) {
 		return res.status(422).send({error: "Provide title and image path"});
 	}
 

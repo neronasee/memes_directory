@@ -1,0 +1,10 @@
+{
+  "name": "common",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start-db": "mongod --dbpath \"C:\\Projects\\memes_directory\\data\"",
+    "start-client": "cd client && npm start",
+    "start-server": "cd server && npm run dev"
+  }
+}

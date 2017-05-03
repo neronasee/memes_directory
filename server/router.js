@@ -17,4 +17,11 @@ module.exports = (app) => {
 	app.get('/memes', Memes.getMems);
 	app.post('/memes', Memes.postMem);
 	app.get('/memes/:id', Memes.getMeme);
+
+	app.use((err, req, res, next) => {
+		console.error(err.stack);
+		res.status(500).send('Error occured');
+	}, (req, res, next) => {
+		res.status(404).send('Not Found');
+	})
 }
