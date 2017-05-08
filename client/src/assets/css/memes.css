@@ -8,6 +8,7 @@
 .memes-item {
   flex-basis: 33.33%;
   text-align: center;
+  border: 1px solid grey;
 }
 
 .memes-item img {

@@ -15,36 +15,35 @@ class Browse extends Component {
 	}
 
 	renderMemes() {
-		/*console.log(this.props)
-		return this.props.memes.map(mem => {
-			console.log(mem)
-			return mem;
-		})*/
 		const mems = this.props.memes;
 		
 		if(Object.keys(mems).length !== 0) {
 			return Object.keys(mems).map((memIndex, i) => {
-				const mem = mems[memIndex]
-				// console.log(mem)
+				const mem = mems[memIndex];
+
 				return (
-					<div className="memes-item" key={i}>
-						<div>
-							<img src={mem.img} alt={mem.title}/>
-						</div>
-						<h3>{mem.title}</h3>
-						<p>{mem.description}</p>
-					</div>
+					<Mem mem={mem} key={i}/>
 				)
 			})
 		}
 	}
 
-	render(){
-		return(
-			<div>
+	renderAddButton() {
+		if(this.props.authenticated) {
+			return (
 				<Link to="/add-new-mem" className="btn btn-success">
 					Add new
 				</Link>
+			)
+		} 
+
+		return <h3>Please, login to able to add MEMES</h3>
+	}
+
+	render(){
+		return(
+			<div>
+				{this.renderAddButton()}
 				<div className="memes-grid">
 					{this.renderMemes()}
 				</div>
@@ -55,7 +54,8 @@ class Browse extends Component {
 
 const mapStateToProps = state => {
 	return {
-		memes: state.memes
+		memes: state.memes,
+		authenticated: state.auth.authenticated,
 	}
 }
 

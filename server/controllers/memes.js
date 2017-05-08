@@ -20,7 +20,7 @@ exports.postMem = (req, res, next) => {
 }
 
 exports.getMems = (req, res, next) => {
-	Mem.find({}, null, {sort: { postDate: 1 }}, (err, result) => {
+	Mem.find({}, null, {sort: { postDate: -1 }}, (err, result) => {
 		if(err) return next(err);
 
 		res.json(result);

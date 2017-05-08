@@ -9,6 +9,7 @@ export const UPLOAD_PIC_FAILURE = 'UPLOAD_PIC_FAILURE';
 
 //memes
 export const FETCH_MEMES = 'FETCH_MEMES';
+export const FETCH_SINGE_MEM = 'FETCH_SINGLE_MEM';
 export const UPLOAD_MEM_SUCCESS = 'UPLOAD_MEM_SUCCESS';
 export const UPLOAD_MEM_FAILURE = 'UPLOAD_MEM_FAILURE';
 

@@ -8,7 +8,9 @@ import Browse from './containers/Browse.js';
 import Signup from './containers/Signup.js';
 import Signin from './containers/Signin.js';
 import About from './components/About';
+import SingleMem from './containers/SingleMem';
 import NewMem from './containers/NewMem';
+import requireAuth from './components/auth/requireAuth';
 import store from './store.js';
 
 import 'bootstrap/dist/css/bootstrap.css';
@@ -21,8 +23,9 @@ ReactDOM.render(
   			<Route path="signin" component={Signin} />
   			<Route path="signup" component={Signup} />
   			<Route path="browse" component={Browse} />
+				<Route path="browse/:id" component={SingleMem} />
 				<Route path="about" component={About} />
-				<Route path="add-new-mem" component={NewMem} />
+				<Route path="add-new-mem" component={requireAuth(NewMem)} />
   		</Route>
   	</Router>
   </Provider>,

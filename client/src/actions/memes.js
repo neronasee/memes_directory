@@ -2,6 +2,7 @@ import {
   UPLOAD_MEM_SUCCESS,
   UPLOAD_MEM_FAILURE,
   FETCH_MEMES,
+  FETCH_SINGE_MEM,
 } from './../consts/types';
 import axios from 'axios';
 import { browserHistory } from 'react-router';
@@ -19,6 +20,21 @@ export function getMemes() {
       }) 
       .catch(error => {
         console.log(error)
+      })
+  }
+}
+
+export function getSingleMem(id) {
+  return function(dispatch) {
+    axios.get(`${ROOT_URL}/memes/${id}`)
+      .then(response => {
+        dispatch({
+          type: FETCH_SINGE_MEM,
+          payload: response.data.mem
+        })
+      })
+      .catch(err => {
+        console.log(err);
       })
   }
 }
